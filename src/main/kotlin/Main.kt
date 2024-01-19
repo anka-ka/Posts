@@ -44,7 +44,7 @@ data class postList(
 )
 
 object WallService {
-    private var uniqueId = 1
+    private var uniqueId = 0
     private var posts = ArrayList<postList>()
     fun add(post: String): Post {
         val newPost = Post(id = uniqueId++, text = post)

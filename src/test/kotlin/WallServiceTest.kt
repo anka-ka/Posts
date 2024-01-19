@@ -21,7 +21,7 @@ class WallServiceTest {
     fun updateUnsuccessfully() {
         val wallService = WallService
         val post1 = wallService.add("Тестирую функцию обновления")
-        val postToUpdate = Post(id = 2, text = " Нет такого id")
+        val postToUpdate = Post(id = 3, text = " Нет такого id")
         val result = WallService.update(postToUpdate)
         assertEquals(false, result)
     }

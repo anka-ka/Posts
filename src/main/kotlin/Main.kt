@@ -28,7 +28,8 @@ data class Post(
     var isFavorite: Boolean = true,
     var isPinned: Boolean = false,
     var canEdit: Boolean = true,
-    var comments: Comments = Comments()
+    var comments: Comments = Comments(),
+    val attachments: Array<Attachment> = emptyArray()
     )
 
 data class Comments (

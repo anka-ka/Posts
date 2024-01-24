@@ -23,7 +23,7 @@ data class Post(
     val fromId: Int = 3,
     val createdBy: Int = 4,
     var date: Long = System.currentTimeMillis() / 1000L,
-    var text: String = " Доброе утро! ",
+    var text: String? = " Доброе утро! ",
     var postType: String = "post",
     var isFavorite: Boolean = true,
     var isPinned: Boolean = false,

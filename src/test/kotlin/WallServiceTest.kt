@@ -12,7 +12,7 @@ class WallServiceTest {
     fun add() {
         val wallService = WallService
         val result = wallService.add(Post(text  = "Тестирую функцию добавления"))
-        assertEquals(1, result.id)
+        assertEquals(1, result.postId)
     }
 
     @Test
@@ -27,8 +27,23 @@ class WallServiceTest {
 
         val wallService = WallService
         val post1 = wallService.add(Post(text= "Тестирую функцию обновления"))
-        val postToUpdate = Post(id = 3, text = " Нет такого id")
+        val postToUpdate = Post(postId = 3, text = " Нет такого id")
         val result = WallService.update(postToUpdate)
         assertFalse(result)
     }
+    @Test()
+    fun createComment() {
+        val wallService = WallService
+        val post1 = wallService.add(Post(text= "Тестирую функцию создания комментария к посту"))
+        val addedComment = WallService.createComment(postId = 1, commentText = Comments(commentText = "ok"))
+        val result = WallService.createComment(1, addedComment)
+        assertEquals("ok", result.commentText)
+    }
+    @Test(expected = WallService.PostNotFoundException::class)
+    fun shouldThrow() {
+        val wallService = WallService
+        wallService.createComment(postId = 1,
+            commentText = Comments(commentText = "Тестирую функцию создания комментария к посту"))
+    }
+
 }

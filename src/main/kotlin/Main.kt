@@ -1,3 +1,4 @@
+
 fun main() {
 
     val post1 = WallService.add(Post(text = " Доброй ночи! "))

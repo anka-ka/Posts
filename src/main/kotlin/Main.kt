@@ -1,3 +1,14 @@
+import ChatService.addChat
+import ChatService.addMessagesToChat
+import ChatService.chats
+import ChatService.deleteChat
+import ChatService.deleteMessage
+import ChatService.getChats
+import ChatService.getLastMessageFromChats
+import ChatService.getMessagesFromChat
+import ChatService.getUnreadChats
+import ChatService.messageIsRead
+
 
 fun main() {
 
@@ -42,7 +53,41 @@ fun main() {
     val restoredCommentForNote = NotesService.restoreComment(1, 0)
     println(restoredCommentForNote)
     val noteIsDeleted = NotesService.delete(1)
-    println(noteIsDeleted)
+   println(noteIsDeleted)
+    val chat = Chats()
+    val addedChat1 = addChat(chat, 1, listOf("Привет!"))
+    println(addedChat1)
+    val addedChat2 = addChat(chat, 2, listOf("Доброе утро!"))
+    println(addedChat2)
+
+    val addedMessage1 = addMessagesToChat(chat, listOf(Pair(1, "Как дела?")))
+    println(addedMessage1)
+    val addedMessage2 = addMessagesToChat(chat, listOf(Pair(1, "У меня все хорошо")))
+    println(addedMessage2)
+
+    println(getChats())
+
+    val messagesFromChat = getMessagesFromChat(chat, 2)
+    println(messagesFromChat)
+
+    val readMessage = messageIsRead(chat, "Как дела?")
+    println(readMessage)
+    println(addedMessage1)
+
+    val deletedMessage = deleteMessage(chat, "У меня все хорошо")
+    println(deletedMessage)
+    println(messagesFromChat)
+
+    val lastMessages = getLastMessageFromChats(chat, 1)
+    println(lastMessages)
+
+    println(getUnreadChats(chats))
+
+    println(deleteChat(2))
+    println(messagesFromChat)
+    println(getChats())
+    println(deleteChat(1))
+    println(getChats())
 
 }
 
